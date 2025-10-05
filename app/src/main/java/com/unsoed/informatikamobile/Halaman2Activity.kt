@@ -21,7 +21,7 @@ class Halaman2Activity : AppCompatActivity() {
         initLayout()
         initListener()
     }
-    private fun initLayout(){
+    private fun initLayout() {
         binding.layoutLocation.let {
             it.imgIcon.setImageResource(R.drawable.ic_location)
             it.tvLayout.setText(R.string.alamat)
@@ -41,10 +41,13 @@ class Halaman2Activity : AppCompatActivity() {
             it.imgIcon.setImageResource(R.drawable.ic_phone)
             it.tvLayout.setText(R.string.telepon)
         }
+        binding.layoutBuku.let {
+            it.imgIcon.setImageResource(R.drawable.ic_book)
+            it.tvLayout.setText("Koleksi Buku")
 
+        }
     }
-
-    private fun initListener(){
+    private fun initListener() {
         binding.layoutLocation.root.setOnClickListener {
             val gMapsIntentUri = "$gMapsUrl$latitude,$longitude".toUri()
             val mapIntent = Intent(Intent.ACTION_VIEW, gMapsIntentUri)
@@ -68,8 +71,12 @@ class Halaman2Activity : AppCompatActivity() {
             }
             startActivity(Intent)
         }
+        binding.layoutBuku.root.setOnClickListener {
+            startActivity(Intent(this, DaftarBukuActivity::class.java))
+        }
         binding.btnBack.setOnClickListener {
             finish()
         }
     }
-}
+
+    }
